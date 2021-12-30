@@ -3,14 +3,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageFilter
 
+from convert_image import convert_image
 
 input_folder = 'image/'
 
-columns = 21
-epoche = 50
+columns = 1344
+epoche = 10
+hidden_layer = 100
 reference = 0
-filename = input_folder+'numbers.jpg'
+border = 6.0
+batch = 10
+filename = input_folder+'numbers1344.jpg'
 image = Image.open(filename)
+predictedValues = []
+images = []
 
 def show(img, figsize=(8, 4), title=None):
     plt.figure(figsize=figsize)
@@ -226,12 +232,12 @@ def initializeModel(i):
     # global y_test
     # y_test = y_test == i
     # hiddenlayer
-    model.add(Dense(100, activation="sigmoid", input_shape=(784,)))
+    model.add(Dense(hidden_layer, activation="sigmoid", input_shape=(784,)))
     # outputlayer
     model.add(Dense(1, activation="sigmoid"))
     model.compile(optimizer="sgd", loss="binary_crossentropy")
     a = x_test.reshape(columns * 10, 784)
-    model.fit(a, y_test, epochs=epoche, batch_size=1000)
+    model.fit(a, y_test, epochs=epoche, batch_size=batch)
 
 
 initializeModel(0)
@@ -239,14 +245,24 @@ initializeModel(0)
 
 #--------------------------------------------------------------
 
-def predictAndShow(img):
+def predictAndShow(expected, img):
     plt.imshow(img)
     plt.show()
-    print("probability of:\t\t\t ", model.predict(img.reshape(1, 784)))
-    if ((model.predict(img.reshape(1, 784))) > (0.6)):
-        print("TRUE")
-    else:
-        print("FALSE")
+    print("probability of predicting", reference ," by image with number ", expected, " is \t\t\t ", model.predict(img.reshape(1, 784)))
+    if( model.predict(img.reshape(1, 784))>border):
+        print("POSSIBLE")
+    predictedValues.append(model.predict(img.reshape(1, 784)))
+
+#--------------------------------------------------------------
+possibleMatches = []
+
+# def predictAndShow(img):
+#     plt.imshow(img)
+#     plt.show()
+#     print("probability of predicting", reference , "is \t\t\t ", model.predict(img.reshape(1, 784)))
+#     if( model.predict(img.reshape(1, 784))>0.3):
+#         print("POSSIBLE")
+#         possibleMatches.append(model.predict(img.reshape(1, 784)))
 
 #--------------------------------------------------------------
 
@@ -307,37 +323,73 @@ z_9 = readImage('image/nine.png')
 
 #--------------------------------------------------------------
 
-# predictAndShow(x_test[2])
-# predictAndShow(x_test[22])
-# predictAndShow(x_test[120])
-# predictAndShow(x_test[127])
-def predictPropability(img):
-    mylist = []
-    for j in range(10):
-        # bestimmeReferenzNummer(j)
-        initializeModel(j)
-        mylist.append(model.predict(img.reshape(1, 784)))
-    max_value = max(mylist)
-    max_index = mylist.index(max_value)
-    plt.imshow(img)
-    plt.show()
-    print("max_index ", max_index)
-    print("myList ", mylist)
-    return max_index
+def determinePredictedNumber(predictedValues):
+    max_value = max(predictedValues)
+    max_index = predictedValues.index(max_value)
+    # print("predicted number ", reference , " could be at index number: ", max_index)
+    # print("propability is ", max_value)
+    if(max_value<(border*0.1)):
+        print("It seems, searched number ", reference, "is not found")
+    else:
+        print("probably searched number ", reference, " was found at index ", max_index)
 
 
-# predictedNumber = predictPropability(z_9)
-# print("predicted number is: ", predictedNumber)
-predictAndShow(z_0)
-# predictAndShow(z_1)
-# predictAndShow(z_2)
-# predictAndShow(z_3)
-# predictAndShow(z_4)
-# predictAndShow(z_5)
-# predictAndShow(z_6)
-# predictAndShow(z_7)
-# predictAndShow(z_8)
-# predictAndShow(z_9)
+#--------------------------------------------------------------
+
+def determinePossibleMatches(possibleMatches):
+    if (len(possibleMatches) == 0):
+        print("looks like, no number is ", reference)
+    if (len(possibleMatches) == 1):
+        print("index with high probability to be number is", possibleMatches)
+    if(len(possibleMatches) > 1):
+        max_value = max(possibleMatches)
+        max_index = possibleMatches.index(max_value)
+        print("index with high probability to be number ", reference, " is ", max_index)
+
+#--------------------------------------------------------------
+
+images.append(z_3)
+images.append(z_8)
+images.append(z_3)
+images.append(z_0)
+images.append(z_1)
+images.append(z_6)
+images.append(z_9)
+
+# for x in images:
+#     predictAndShow(x)
+
+#--------------------------------------------------------------
+
+print("-------------------- IMAGES --------------------")
+print("REFERENCE NUMBER ", reference)
+predictAndShow(0, z_0)
+predictAndShow(1, z_1)
+predictAndShow(2, z_2)
+# predictAndShow(3, z_3)
+predictAndShow(4, z_4)
+predictAndShow(5, z_5)
+predictAndShow(6, z_6)
+# predictAndShow(7, z_7)
+predictAndShow(8, z_8)
+# predictAndShow(9, z_9)
+
+
+# predictAndShow( z_0)
+# predictAndShow( z_1)
+# predictAndShow( z_2)
+# predictAndShow( z_3)
+# predictAndShow( z_4)
+# predictAndShow( z_5)
+# predictAndShow( z_6)
+# predictAndShow( z_7)
+# predictAndShow( z_8)
+# predictAndShow( z_9)
+
+determinePredictedNumber(predictedValues)
+
+# determinePossibleMatches(possibleMatches)
+
 
 
 #--------------------------------------------------------------

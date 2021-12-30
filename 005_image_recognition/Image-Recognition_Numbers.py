@@ -16,6 +16,7 @@ def open_labels(filename):
 X_train = open_images("data/mnist/train-images-idx3-ubyte.gz")
 y_train = open_labels("data/mnist/train-labels-idx1-ubyte.gz")
 
+
 print("image: T-Shirt")
 print(X_train[1])
 
@@ -163,6 +164,6 @@ plt.show()
 print("probability:\t\t\t ", model.predict(u.reshape(1,784)))
 
 
-for x in X_train:
-    print(x)
+# for x in X_train:
+#     print(x)
 

@@ -63,7 +63,7 @@ def predictAndShow(i):
     plt.imshow(i, cmap='gray_r')
     plt.show()
     print("probability:\t\t\t ", model.predict(i.reshape(1, 784)))
-    if ((model.predict(i.reshape(1, 784))) > (0.6)):
+    if ((model.predict(i.reshape(1, 784))) > (0.45)):
         print("TRUE")
     else:
         print("FALSE")
