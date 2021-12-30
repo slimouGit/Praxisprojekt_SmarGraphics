@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageFilter
 
-from convert_image import convert_image
+from image_converter import convert_image
 
 input_folder = 'image/'
 
@@ -240,7 +240,7 @@ def initializeModel(i):
     model.fit(a, y_test, epochs=epoche, batch_size=batch)
 
 
-initializeModel(0)
+initializeModel(reference)
 
 
 #--------------------------------------------------------------

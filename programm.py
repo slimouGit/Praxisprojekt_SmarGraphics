@@ -1,5 +1,5 @@
-import convert_image
+import image_converter
 
-test = convert_image.readImage('image/test.png')
+test = image_converter.readImage('image/test.png')
 
 print(test)

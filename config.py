@@ -1,0 +1,10 @@
+input_folder = 'image/'
+columns = 1344
+epoche = 10
+hidden_layer = 100
+reference = 5
+border = 6.0
+batch = 10
+filename = input_folder+'numbers1344.jpg'
+xfile = 'digits_x_test.npy'
+yfile = 'digits_y_test.npy'
