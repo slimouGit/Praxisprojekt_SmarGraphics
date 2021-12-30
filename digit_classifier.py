@@ -87,16 +87,16 @@ def determinePossibleMatches(possibleMatches):
 
 print("-------------------- IMAGES --------------------")
 print("REFERENCE NUMBER ", config.reference)
-predictAndShow(0, image_converter.readImage('image/null.png'))
-predictAndShow(1, image_converter.readImage('image/one.png'))
-predictAndShow(2, image_converter.readImage('image/two.png'))
-# predictAndShow(3, image_converter.readImage('image/three.png'))
-predictAndShow(4, image_converter.readImage('image/four.png'))
-predictAndShow(5, image_converter.readImage('image/five.png'))
-predictAndShow(6, image_converter.readImage('image/six.png'))
-# predictAndShow(7, image_converter.readImage('image/seven.png'))
-predictAndShow(8, image_converter.readImage('image/eight.png'))
-# predictAndShow(9, image_converter.readImage('image/nine.png'))
+predictAndShow(0, image_converter.read_image('image/null.png'))
+predictAndShow(1, image_converter.read_image('image/one.png'))
+predictAndShow(2, image_converter.read_image('image/two.png'))
+# predictAndShow(3, image_converter.read_image('image/three.png'))
+# predictAndShow(4, image_converter.read_image('image/four.png'))
+predictAndShow(5, image_converter.read_image('image/five.png'))
+# predictAndShow(6, image_converter.read_image('image/six.png'))
+predictAndShow(7, image_converter.read_image('image/seven.png'))
+predictAndShow(8, image_converter.read_image('image/eight.png'))
+predictAndShow(9, image_converter.read_image('image/nine.png'))
 
 #--------------------------------------------------------------
 
