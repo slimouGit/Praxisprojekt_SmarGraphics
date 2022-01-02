@@ -1,6 +1,6 @@
 from PIL import Image, ImageFilter
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 
 
@@ -16,14 +16,5 @@ def read_image(image):
 
 
 
-def show(img, figsize=(8, 4), title=None):
-    plt.figure(figsize=figsize)
-    plt.imshow(img, cmap='gray')
-    if title:
-        plt.title(title)
-    plt.show()
 
-test = read_image('image/five.png')
 
-print(test)
-show(test)

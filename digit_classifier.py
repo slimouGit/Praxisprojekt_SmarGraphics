@@ -33,7 +33,7 @@ x_test.shape, y_test.shape
 
 def bestimmeReferenzNummer(i):
     global y_test
-    y_test = y_test == i  # Vergleich ueber alle Elemente im Daten-Array, Aufloesung nach T-Shirt == 0
+    y_test = y_test == i
 
 bestimmeReferenzNummer(config.reference)
 
@@ -73,30 +73,13 @@ def determinePredictedNumber(predictedValues):
 
 #--------------------------------------------------------------
 
-def determinePossibleMatches(possibleMatches):
-    if (len(possibleMatches) == 0):
-        print("looks like, no number is ", config.reference)
-    if (len(possibleMatches) == 1):
-        print("index with high probability to be number is", possibleMatches)
-    if(len(possibleMatches) > 1):
-        max_value = max(possibleMatches)
-        max_index = possibleMatches.index(max_value)
-        print("index with high probability to be number ", config.reference, " is ", max_index)
-
-#--------------------------------------------------------------
-
 print("-------------------- IMAGES --------------------")
 print("REFERENCE NUMBER ", config.reference)
-predictAndShow(0, image_converter.read_image('image/null.png'))
-predictAndShow(1, image_converter.read_image('image/one.png'))
-predictAndShow(2, image_converter.read_image('image/two.png'))
-# predictAndShow(3, image_converter.read_image('image/three.png'))
-# predictAndShow(4, image_converter.read_image('image/four.png'))
 predictAndShow(5, image_converter.read_image('image/five.png'))
-# predictAndShow(6, image_converter.read_image('image/six.png'))
 predictAndShow(7, image_converter.read_image('image/seven.png'))
+predictAndShow(2, image_converter.read_image('image/two.png'))
 predictAndShow(8, image_converter.read_image('image/eight.png'))
-predictAndShow(9, image_converter.read_image('image/nine.png'))
+predictAndShow(3, image_converter.read_image('image/three.png'))
 
 #--------------------------------------------------------------
 
