@@ -8,5 +8,7 @@ Enthalten sind folgende 5 Klassen:
 - config.py: enthält global zu konfigurierende Attribute der Anwendung)
 - dataset_initializer.py: zur Erstellung eines Test- und Trainingsdatensatzes
 - digit-classifier.py: zur Klassifikation von Bilddaten
-- image_converter: zum Konvertieren von Abbildungen in maschinenlesbare Biddaten (wird aus digit-classifier.py aufgerufen)		 
+- image_converter: zum Konvertieren von Abbildungen in maschinenlesbare Biddaten (wird aus digit-classifier.py aufgerufen)	
+- im Verzeichnis data liegen die mit der Klasse dataset_initializer.py erstellten Test- und Trainingsdatensätze 
+- im Verzeichnis image liegen Beispieldaten von Ziffern zum Klassifizieren ab und die Daten zum Erstellen der Test- und Trainingsdatensätze 
 
