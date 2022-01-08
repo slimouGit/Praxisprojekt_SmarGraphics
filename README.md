@@ -5,7 +5,7 @@ Die Anwendung wurde im Rahmen der Semesterarbeit im Seminar Smart Graphics des W
 
 Enthalten sind folgende 4 Klassen und 2 Verzeichnisse:
 
-- config.py: enthält global zu konfigurierende Attribute der Anwendung)
+- config.py: enthält global zu konfigurierende Attribute der Anwendung
 - dataset_initializer.py: zur Erstellung eines Test- und Trainingsdatensatzes
 - digit-classifier.py: zur Klassifikation von Bilddaten
 - image_converter: zum Konvertieren von Abbildungen in maschinenlesbare Biddaten (wird aus digit-classifier.py aufgerufen)	
